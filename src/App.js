@@ -49,10 +49,12 @@ class App extends Component {
     const { searchTerm, list } = this.state
 
     return (
-      <div className='App'>
-        <Search value={searchTerm} onChange={this.onSearchChange}>
-          Search
-        </Search>
+      <div className='page'>
+        <div className='interactions'>
+          <Search value={searchTerm} onChange={this.onSearchChange}>
+            Search
+          </Search>
+        </div>
         <Table list={list} pattern={searchTerm} onDismiss={this.onDismiss} />
 
       </div>
