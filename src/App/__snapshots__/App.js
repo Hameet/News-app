@@ -2,9 +2,9 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import './App.css'
 
-import Search from './Search'
-import Table from './Table'
-import Button from './Button'
+import Search from '../Search'
+import Table from '../Table'
+import Button from '../Button'
 
 const DEFAULT_QUERY = 'redux'
 const DEFAULT_HPP = '100'

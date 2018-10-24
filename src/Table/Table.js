@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
 
-import Button from './Button'
+import Button from '../Button/Button'
 
 const largeColumn = {
-  width: '40%'
+  width: '50%'
 }
 const midColumn = {
-  width: '30%'
+  width: '20%'
 }
 const smallColumn = {
   width: '10%'
@@ -19,10 +19,10 @@ const Table = ({ list, onDismiss }) => {
         return (
           <div key={item.objectID} className='table-row'>
             <span style={largeColumn}>
-              <h2><a href={item.url}>{item.title}</a></h2>
+              <h3><a href={item.url}>{item.title}</a></h3>
             </span>
             <span style={midColumn}>
-              <h2>{item.author}</h2>
+              <h3>{item.author}</h3>
             </span>
             <span style={smallColumn}>
               {item.num_comments}
