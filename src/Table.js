@@ -1,11 +1,5 @@
 import React, { Component } from 'react'
 
-function isSearched (searchTerm) {
-  return function (item) {
-    return item.author.toLowerCase().includes(searchTerm.toLowerCase())
-  }
-}
-
 const Button = ({ onClick, className = '', children }) => {
   return (
     <button onClick={onClick} className={className} type='button'>
@@ -24,11 +18,10 @@ const smallColumn = {
   width: '10%'
 }
 
-const Table = ({ list, pattern, onDismiss }) => {
+const Table = ({ list, onDismiss }) => {
   return (
     <div className='table'>
-      <h2>Hey</h2>
-      {list.filter(isSearched(pattern)).map(item => {
+      {list.map(item => {
         return (
           <div key={item.objectID} className='table-row'>
             <span style={largeColumn}>

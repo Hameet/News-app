@@ -4,7 +4,7 @@ import './App.css'
 import Search from './Search'
 import Table from './Table'
 
-const DEFAULT_QUERY = 'redux'
+const DEFAULT_QUERY = ''
 const PATH_BASE = 'https://hn.algolia.com/api/v1'
 const PATH_SEARCH = '/search'
 const PARAM_SEARCH = 'query='
@@ -19,7 +19,16 @@ class App extends Component {
     }
     this.onDismiss = this.onDismiss.bind(this)
     this.onSearchChange = this.onSearchChange.bind(this)
+    this.fetchSearchTopStories = this.fetchSearchTopStories.bind(this)
     this.setSearchTopStories = this.setSearchTopStories.bind(this)
+    this.onSearchSubmit = this.onSearchSubmit.bind(this)
+  }
+
+  fetchSearchTopStories (searchTerm) {
+    fetch(`${PATH_BASE}${PATH_SEARCH}?${PARAM_SEARCH}${searchTerm}`)
+      .then(response => response.json())
+      .then(result => this.setSearchTopStories(result))
+      .catch(error => error)
   }
 
   setSearchTopStories (result) {
@@ -28,10 +37,7 @@ class App extends Component {
 
   componentDidMount () {
     const { searchTerm } = this.state
-    fetch(`${PATH_BASE}${PATH_SEARCH}?${PARAM_SEARCH}${searchTerm}`)
-      .then(response => response.json())
-      .then(result => this.setSearchTopStories(result))
-      .catch(error => error)
+    this.fetchSearchTopStories(searchTerm)
   }
 
   onDismiss (id) {
@@ -44,24 +50,25 @@ class App extends Component {
     this.setState({ searchTerm: event.target.value })
   }
 
+  onSearchSubmit () {
+    const { searchTerm } = this.state
+  }
+
   render () {
     const { searchTerm, result } = this.state
 
     return (
       <div className='page'>
         <div className='interactions'>
-          <Search value={searchTerm} onChange={this.onSearchChange}>
+          <Search
+            value={searchTerm}
+            onChange={this.onSearchChange}
+            onSubmit={this.onSearchSubmit}
+          >
             Search
           </Search>
         </div>
-        {result
-          ? <Table
-            list={result.hits}
-            pattern={searchTerm}
-            onDismiss={this.onDismiss}
-            />
-          : null}
-
+        {result && <Table list={result.hits} onDismiss={this.onDismiss} />}
       </div>
     )
   }
