@@ -50,13 +50,15 @@ class App extends Component {
     this.setState({ searchTerm: event.target.value })
   }
 
-  onSearchSubmit () {
+  onSearchSubmit (event) {
     const { searchTerm } = this.state
+    this.fetchSearchTopStories(searchTerm)
+    event.preventDefault()
   }
 
   render () {
     const { searchTerm, result } = this.state
-
+    console.log(this.state)
     return (
       <div className='page'>
         <div className='interactions'>
