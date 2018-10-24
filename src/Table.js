@@ -27,6 +27,7 @@ const smallColumn = {
 const Table = ({ list, pattern, onDismiss }) => {
   return (
     <div className='table'>
+      <h2>Hey</h2>
       {list.filter(isSearched(pattern)).map(item => {
         return (
           <div key={item.objectID} className='table-row'>
