@@ -1,3 +1,3 @@
 # News-app
 
-Making an app while revising the old and learning new React concepts
+A mixture of OOP and Functional Programming concepts. Check it out here https://tech-report-api.herokuapp.com/
