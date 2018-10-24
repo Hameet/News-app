@@ -1,7 +1,9 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
+import Enzyme, { shallow } from 'enzyme'
 import renderer from 'react-test-renderer'
 import Table from './Table'
+import Button from '../Button/Button'
 
 describe('Table', () => {
   const props = {
@@ -16,8 +18,20 @@ describe('Table', () => {
     ReactDOM.render(<Table {...props}>Table</Table>, div)
   })
   test('has a valid snapshot', () => {
-    const component = renderer.create(<Table {...props} />)
+    const component = renderer.create(
+      <Table {...props}><Button>Dismiss</Button></Table>
+    )
     const tree = component.toJSON()
     expect(tree).toMatchSnapshot()
+  })
+
+  it('shows two items in list', () => {
+    const element = shallow(<Table {...props} />)
+    expect(element.find('.table-row').length).toBe(2)
+  })
+
+  it('shows button is present', () => {
+    const element = shallow(<Table {...props} />)
+    expect(element.find(<Button />).length).toBe(0)
   })
 })
