@@ -10,26 +10,26 @@ exports[`Table has a valid snapshot 1`] = `
     <span
       style={
         Object {
-          "width": "40%",
+          "width": "50%",
         }
       }
     >
-      <h2>
+      <h3>
         <a>
           1
         </a>
-      </h2>
+      </h3>
     </span>
     <span
       style={
         Object {
-          "width": "30%",
+          "width": "20%",
         }
       }
     >
-      <h2>
+      <h3>
         1
-      </h2>
+      </h3>
     </span>
     <span
       style={
@@ -71,26 +71,26 @@ exports[`Table has a valid snapshot 1`] = `
     <span
       style={
         Object {
-          "width": "40%",
+          "width": "50%",
         }
       }
     >
-      <h2>
+      <h3>
         <a>
           2
         </a>
-      </h2>
+      </h3>
     </span>
     <span
       style={
         Object {
-          "width": "30%",
+          "width": "20%",
         }
       }
     >
-      <h2>
+      <h3>
         2
-      </h2>
+      </h3>
     </span>
     <span
       style={
